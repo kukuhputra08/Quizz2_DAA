@@ -1,0 +1,227 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 24px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 8px 0;
+    font-size: 34px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin: 0 0 24px 0;
+    font-size: 17px;
+}
+
+.layout {
+    width: 100%;
+}
+
+/* Bagian atas: form dan result dibuat berjejer */
+.top-panel {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.order-card {
+    width: 100%;
+}
+
+.order-card h2,
+.result-card h2,
+.map-card h2 {
+    margin-top: 0;
+}
+
+.order-card h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+
+select,
+button {
+    width: 100%;
+    display: block;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    margin-top: 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* Result dibuat compact dan horizontal */
+.result-card {
+    width: 100%;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 220px 220px 1fr;
+    gap: 16px 24px;
+    align-items: start;
+}
+
+.wide-result {
+    grid-column: 1 / -1;
+}
+
+.result-value {
+    color: #2563eb;
+    font-weight: bold;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* Graph full width di bawah */
+.map-card {
+    width: 100%;
+    padding: 22px;
+}
+
+.map-card h2 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+svg {
+    width: 100%;
+    height: calc(100vh - 260px);
+    min-height: 720px;
+    background: #eef3ff;
+    border-radius: 14px;
+    display: block;
+}
+
+/* Edge / jalan */
+.edge {
+    stroke: #94a3b8;
+    stroke-width: 3;
+}
+
+/* Label jarak */
+.edge-label {
+    fill: #334155;
+    font-size: 12px;
+    font-weight: bold;
+    paint-order: stroke;
+    stroke: #eef3ff;
+    stroke-width: 5px;
+    stroke-linejoin: round;
+}
+
+/* Jalur hasil Dijkstra */
+.route-edge {
+    stroke: #22c55e;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+/* Node default */
+.node {
+    fill: white;
+    stroke: #475569;
+    stroke-width: 3;
+}
+
+/* Node toko */
+.store-node {
+    fill: #dbeafe;
+    stroke: #2563eb;
+}
+
+/* Node customer */
+.customer-node {
+    fill: #dcfce7;
+    stroke: #16a34a;
+}
+
+/* Node yang dikunjungi algoritma */
+.visited-node {
+    fill: #fef3c7;
+    stroke: #f59e0b;
+}
+
+/* Node yang termasuk shortest path */
+.path-node {
+    fill: #bbf7d0;
+    stroke: #22c55e;
+    stroke-width: 4;
+}
+
+.node-label {
+    font-size: 13px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: #111827;
+}
+
+/* Agen / kurir */
+.agent {
+    fill: #ef4444;
+    stroke: white;
+    stroke-width: 3;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .top-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    svg {
+        height: 680px;
+        min-height: 680px;
+    }
+}

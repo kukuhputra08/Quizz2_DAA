@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Delivery Route Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Delivery Route Finder</h1>
+        <p class="subtitle">Delivery route simulation using Dijkstra Algorithm and Flask API</p>
+
+        <div class="layout">
+            <div class="top-panel">
+                <div class="card order-card">
+                    <h2>Order Simulation</h2>
+
+                    <label for="destination">Choose Customer Destination</label>
+                    <select id="destination">
+                        <option value="">Loading customers...</option>
+                    </select>
+
+                    <button onclick="findRoute()">Find Best Route</button>
+                </div>
+
+                <div class="card result-card">
+                    <h2>Route Result</h2>
+
+                    <div class="result-grid">
+                        <div>
+                            <strong>Algorithm:</strong><br>
+                            <span class="result-value" id="algorithm">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Total Distance:</strong><br>
+                            <span class="result-value" id="distance">-</span>
+                        </div>
+
+                        <div class="wide-result">
+                            <strong>Best Route:</strong><br>
+                            <span class="result-value" id="route">-</span>
+                        </div>
+
+                        <div class="wide-result">
+                            <strong>Visited Nodes:</strong><br>
+                            <span class="result-value" id="visited">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card map-card">
+                <h2>Delivery Map Visualization</h2>
+
+                <svg id="map" viewBox="0 0 1100 800">
+                    <g id="edges"></g>
+                    <g id="routeLayer"></g>
+                    <g id="nodes"></g>
+                    <circle id="agent" class="agent" r="12" cx="90" cy="400"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
