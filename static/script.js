@@ -33,6 +33,19 @@ async function loadCustomers() {
     locationsData = data.locations;
     graphData = data.graph;
 
+    const startSelect = document.getElementById("start");
+    startSelect.innerHTML = "";
+
+    for (const [code, name] of Object.entries(data.locations)) {
+        const option = document.createElement("option");
+        option.value = code;
+        option.textContent = `${code} - ${name}`;
+        startSelect.appendChild(option);
+    }
+
+    // Set default start to A
+    startSelect.value = "A";
+
     const destinationSelect = document.getElementById("destination");
     destinationSelect.innerHTML = "";
 
@@ -216,7 +229,13 @@ function highlightPathNodes(path) {
 }
 
 async function findRoute() {
+    const start = document.getElementById("start").value;
     const destination = document.getElementById("destination").value;
+
+    if (!start || !destination) {
+        alert("Please select both start and destination");
+        return;
+    }
 
     resetMap();
 
@@ -226,7 +245,7 @@ async function findRoute() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            start: "A",
+            start: start,
             destination: destination
         })
     });
